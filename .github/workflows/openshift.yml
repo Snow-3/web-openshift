@@ -33,7 +33,7 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
-  OPENSHIFT_NAMESPACE: snow3
+  OPENSHIFT_NAMESPACE: ""
 
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
   APP_NAME: "Web OpenShift"
@@ -45,7 +45,7 @@ env:
 
   # 🖊️ EDIT to change the image registry settings.
   # Registries such as GHCR, Quay.io, and Docker Hub are supported.
-  IMAGE_REGISTRY: docker.io/thanhtuyet
+  IMAGE_REGISTRY: docker.io/thanhtuyet/web-openshift
   IMAGE_REGISTRY_USER: thanhtuyet
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -68,7 +68,7 @@ jobs:
   # For guide on adding new starter workflow visit https://docs.github.com/en/github-ae@latest/actions/using-workflows/using-starter-workflows
 
   crda-scan:
-    uses: ./.github/workflows/openshift.yml
+    uses: ./.github/workflows/crda.yml
     secrets:
       CRDA_KEY: ${{ secrets.CRDA_KEY }}
       # SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}       # Either use SNYK_TOKEN or CRDA_KEY
